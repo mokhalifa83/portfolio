@@ -14,7 +14,7 @@
 body,
 html,
 #root {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   font-family: var(--font-sans);
   overflow: hidden;
@@ -57,27 +57,27 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
+/* HOME PAGE SPECIFIC */
 .portfolio-container {
   display: flex;
-  height: 100%;
-  width: 100%;
-  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
 }
 
 .left-panel {
   flex: 1;
   height: 100%;
-  overflow: hidden;
 }
 
 .left-panel img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 85% 15%;
+  /* Restoring original focus */
   display: block;
 }
 
@@ -86,46 +86,49 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 8%;
+  padding: 0 10%;
   height: 100%;
 }
 
 h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-size: 6.5rem;
+  /* Original Desktop Size */
   font-weight: 400;
   line-height: 0.95;
   color: #000;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   letter-spacing: -2px;
 }
 
 .subtitle {
-  font-size: clamp(0.9rem, 2vw, 1.2rem);
-  color: #666;
-  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 4rem;
   font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
 .button-group {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 20px;
+  /* Side by side on desktop */
 }
 
 .email-button {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 28px;
+  gap: 15px;
+  padding: 18px 36px;
   background: transparent;
   border: 1px solid #000;
   color: #000;
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .email-button:hover {
@@ -133,31 +136,44 @@ h1 {
   color: #fff;
 }
 
+/* MOBILE FIXES - ONLY APPLYING TO MOBILE */
 @media (max-width: 1024px) {
   .portfolio-container {
     flex-direction: column;
   }
 
   .left-panel {
-    height: 42%;
+    height: 40vh;
     flex: none;
   }
 
   .right-panel {
-    height: 58%;
+    height: 60vh;
+    padding: 2rem;
     flex: none;
-    padding: 2rem 10%;
     justify-content: flex-start;
-    padding-top: 3rem;
+    padding-top: 4rem;
   }
-}
 
-@media (max-width: 480px) {
   h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
   }
 
-  .right-panel {
-    padding-top: 2.5rem;
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .email-button {
+    padding: 15px 20px;
+    font-size: 1rem;
+    justify-content: center;
   }
 }
