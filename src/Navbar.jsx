@@ -21,9 +21,10 @@ function Navbar() {
 
     useEffect(() => {
         const sections = ['home', 'about', 'qualifications', 'experience', 'contact'];
+        const container = document.querySelector('.main-scroll-container');
 
         const observerOptions = {
-            root: document.querySelector('.main-scroll-container'),
+            root: container,
             threshold: 0.5,
         };
 
@@ -43,7 +44,7 @@ function Navbar() {
         return () => observer.disconnect();
     }, []);
 
-    // Use full names for desktop, shortened for mobile to keep them in one row
+    // Labels for desktop vs mobile
     const getLabel = (id) => {
         if (isMobile) {
             switch (id) {
@@ -69,21 +70,15 @@ function Navbar() {
     return (
         <nav className={`navbar section-${activeSection}`}>
             <div className="nav-links">
-                <button className={activeSection === 'home' ? 'active' : ''} onClick={() => scrollToSection('home')}>
-                    {getLabel('home')}
-                </button>
-                <button className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>
-                    {getLabel('about')}
-                </button>
-                <button className={activeSection === 'qualifications' ? 'active' : ''} onClick={() => scrollToSection('qualifications')}>
-                    {getLabel('qualifications')}
-                </button>
-                <button className={activeSection === 'experience' ? 'active' : ''} onClick={() => scrollToSection('experience')}>
-                    {getLabel('experience')}
-                </button>
-                <button className={activeSection === 'contact' ? 'active' : ''} onClick={() => scrollToSection('contact')}>
-                    {getLabel('contact')}
-                </button>
+                {['home', 'about', 'qualifications', 'experience', 'contact'].map((id) => (
+                    <button
+                        key={id}
+                        className={activeSection === id ? 'active' : ''}
+                        onClick={() => scrollToSection(id)}
+                    >
+                        {getLabel(id)}
+                    </button>
+                ))}
             </div>
         </nav>
     );

@@ -1,7 +1,9 @@
 .navbar {
     position: fixed;
-    top: 50px;
-    right: 8%;
+    top: 60px;
+    /* Original spacing from top */
+    right: 10%;
+    /* Aligned with right-panel padding */
     z-index: 10000;
     pointer-events: auto;
     transition: color 0.5s ease;
@@ -20,14 +22,14 @@
     font-weight: 500;
     cursor: pointer;
     padding: 0;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
     color: inherit;
 }
 
-/* Color logic for sections */
+/* Section-specific colors for contrast */
 .navbar.section-home .nav-links button,
 .navbar.section-experience .nav-links button,
 .navbar.section-contact .nav-links button {
@@ -42,10 +44,11 @@
 .nav-links button::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: -6px;
     left: 0;
     width: 0;
-    height: 1px;
+    height: 1.5px;
+    /* Slightly bolder underline as per original */
     background-color: currentColor;
     transition: width 0.3s ease;
 }
@@ -59,9 +62,21 @@
     font-weight: 700;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     .navbar {
-        top: 15px;
+        right: 5%;
+    }
+
+    .nav-links {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* MOBILE PILL UI - KEPT SEPARATE */
+    .navbar {
+        top: 20px;
         right: 50%;
         transform: translateX(50%);
         width: auto;
@@ -70,10 +85,10 @@
     .nav-links {
         gap: 12px;
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        padding: 8px 16px;
-        border-radius: 30px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 10px 20px;
+        border-radius: 40px;
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
@@ -82,11 +97,16 @@
     }
 
     .navbar.section-about .nav-links {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.1);
     }
 
     .nav-links button {
-        font-size: 0.6rem;
+        font-size: 0.65rem;
         letter-spacing: 0.5px;
+    }
+
+    .nav-links button::after {
+        display: none;
+        /* Hide underline on mobile for cleaner pill UI */
     }
 }
