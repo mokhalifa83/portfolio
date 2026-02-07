@@ -1,0 +1,95 @@
+.qualifications-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    font-family: 'Inter', sans-serif;
+    background-color: transparent;
+    color: #000;
+}
+
+.qualifications-content {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.section-title {
+    font-size: 5rem;
+    font-weight: 400;
+    margin-bottom: 6rem;
+    letter-spacing: -2px;
+}
+
+.qualifications-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: flex-start;
+}
+
+.qual-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.qual-icon {
+    margin-bottom: 2rem;
+    color: #000;
+    opacity: 0.8;
+}
+
+.qual-heading {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.qual-details p {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.2rem;
+}
+
+.qual-year {
+    margin: 1rem 0;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+}
+
+@media (max-width: 900px) {
+    .section-title {
+        font-size: 3.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .qualifications-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .qual-heading {
+        font-size: 2rem;
+    }
+
+    .qual-details p,
+    .skills-list li {
+        font-size: 1.1rem;
+    }
+}@media (max-width: 900px) {
+    .qualifications-container { align-items: flex-start; padding-top: 6rem; padding-bottom: 2rem; height: auto; min-height: 100vh; }
+    .section-title { font-size: 2.5rem; margin-bottom: 2rem; }
+    .qual-heading { font-size: 1.8rem; margin-bottom: 1rem; }
+    .qualifications-grid { gap: 30px; }
+    .qual-icon { margin-bottom: 1rem; transform: scale(0.8); }
+}

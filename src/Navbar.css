@@ -1,0 +1,102 @@
+.navbar {
+    position: fixed;
+    top: 50px;
+    right: 8%;
+    z-index: 10000;
+    pointer-events: auto;
+    transition: color 0.5s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links button {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+/* Base colors for light sections */
+.navbar.section-home .nav-links button,
+.navbar.section-experience .nav-links button,
+.navbar.section-contact .nav-links button {
+    color: #000;
+}
+
+/* Base colors for dark sections */
+.navbar.section-about .nav-links button,
+.navbar.section-qualifications .nav-links button {
+    color: #fff;
+}
+
+.nav-links button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+.nav-links button.active::after,
+.nav-links button:hover::after {
+    width: 100%;
+}
+
+.nav-links button.active {
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        top: 30px;
+        right: 5%;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        top: 20px;
+        right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-links {
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 10px 20px;
+        border-radius: 30px;
+    }
+
+    .navbar.section-home .nav-links {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar.section-about .nav-links {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links button {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+}
