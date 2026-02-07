@@ -48,10 +48,38 @@
     font-weight: 400;
 }
 
-.contact-message a {
+.contact-message a:hover {
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    gap: 30px;
+    margin-top: 4rem;
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #000;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    border-color: #000;
+    transform: translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
 @media (max-width: 768px) {
@@ -77,5 +105,15 @@
 
     .contact-message {
         font-size: 1.2rem;
+    }
+
+    .social-links {
+        margin-top: 2.5rem;
+        gap: 20px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
     }
 }
