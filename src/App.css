@@ -76,8 +76,8 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 85% 15%;
-  /* Original framing from first version */
+  object-position: 100% 15%;
+  /* Pushed left as requested */
   display: block;
 }
 
@@ -117,7 +117,7 @@ h1 {
 .email-button {
   display: inline-flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   padding: 18px 36px;
   background: transparent;
   border: 1px solid #000;
