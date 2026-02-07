@@ -1,105 +1,92 @@
 .navbar {
     position: fixed;
-    top: 30px;
-    right: 50%;
-    transform: translateX(50%);
-    width: auto;
-    max-width: 95vw;
+    top: 50px;
+    right: 8%;
     z-index: 10000;
     pointer-events: auto;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 12px 30px;
-    border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    gap: 40px;
 }
 
 .nav-links button {
     background: none;
     border: none;
-    font-family: inherit;
-    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
-    padding: 2px 0;
+    padding: 0;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     position: relative;
-    white-space: nowrap;
+    color: inherit;
 }
 
-/* Base colors for light sections */
+/* Color logic for sections */
 .navbar.section-home .nav-links button,
 .navbar.section-experience .nav-links button,
 .navbar.section-contact .nav-links button {
     color: #000;
 }
 
-/* Base colors for dark sections */
 .navbar.section-about .nav-links button,
 .navbar.section-qualifications .nav-links button {
     color: #fff;
 }
 
-.navbar.section-home .nav-links {
-    border-color: rgba(0, 0, 0, 0.05);
+.nav-links button::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
 }
 
-.navbar.section-about .nav-links {
-    background: rgba(255, 255, 255, 0.05);
+.nav-links button.active::after,
+.nav-links button:hover::after {
+    width: 100%;
 }
 
 .nav-links button.active {
     font-weight: 700;
 }
 
-.nav-links button::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: currentColor;
-    transition: width 0.3s ease;
-}
-
-.nav-links button.active::after {
-    width: 100%;
-}
-
 @media (max-width: 768px) {
     .navbar {
         top: 15px;
+        right: 50%;
+        transform: translateX(50%);
+        width: auto;
     }
 
     .nav-links {
         gap: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         padding: 8px 16px;
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar.section-home .nav-links {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar.section-about .nav-links {
+        background: rgba(255, 255, 255, 0.05);
     }
 
     .nav-links button {
         font-size: 0.6rem;
         letter-spacing: 0.5px;
-    }
-}
-
-@media (max-width: 380px) {
-    .nav-links {
-        gap: 8px;
-        padding: 6px 12px;
-    }
-
-    .nav-links button {
-        letter-spacing: 0;
     }
 }
