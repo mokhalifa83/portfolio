@@ -1,32 +1,30 @@
 .experience-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 5%;
-    background-color: transparent;
+    padding: 0 5%;
     color: #000;
 }
 
 .experience-content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     text-align: center;
 }
 
 .section-title {
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: clamp(2.4rem, 5vw, 5rem);
     font-weight: 400;
-    margin-bottom: clamp(3rem, 10vh, 8rem);
+    margin-bottom: clamp(1.5rem, 6vh, 5rem);
     letter-spacing: -2px;
 }
 
 .experience-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px;
-    align-items: flex-start;
+    gap: 20px;
 }
 
 .exp-column {
@@ -36,38 +34,40 @@
 }
 
 .exp-icon {
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     color: #000;
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .exp-heading {
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
     font-weight: 400;
     line-height: 1.2;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .exp-date {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #666;
 }
 
 @media (max-width: 900px) {
     .experience-container {
         align-items: flex-start;
-        padding-top: 5rem;
+        padding-top: 5.5rem;
     }
 
     .experience-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 30px;
     }
 
-    .section-title {
-        margin-bottom: 3rem;
+    .exp-icon {
+        margin-bottom: 0.5rem;
+        height: 50px;
+        transform: scale(0.85);
     }
 }
