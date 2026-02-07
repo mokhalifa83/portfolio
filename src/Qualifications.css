@@ -1,11 +1,10 @@
 .qualifications-container {
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10%;
-    font-family: 'Inter', sans-serif;
+    padding: 2rem 10%;
     background-color: transparent;
     color: #000;
 }
@@ -16,16 +15,16 @@
 }
 
 .section-title {
-    font-size: 5rem;
+    font-size: clamp(2.5rem, 5vw, 5rem);
     font-weight: 400;
-    margin-bottom: 6rem;
+    margin-bottom: clamp(2rem, 8vh, 6rem);
     letter-spacing: -2px;
 }
 
 .qualifications-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
+    gap: 60px;
     align-items: flex-start;
 }
 
@@ -35,25 +34,25 @@
 }
 
 .qual-icon {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     color: #000;
-    opacity: 0.8;
 }
 
 .qual-heading {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .qual-details p {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
     line-height: 1.4;
     margin-bottom: 0.2rem;
 }
 
 .qual-year {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
+    font-weight: 500;
 }
 
 .skills-list {
@@ -62,34 +61,19 @@
 }
 
 .skills-list li {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
     line-height: 1.6;
     margin-bottom: 0.4rem;
 }
 
-@media (max-width: 900px) {
-    .section-title {
-        font-size: 3.5rem;
-        margin-bottom: 3rem;
+@media (max-width: 768px) {
+    .qualifications-container {
+        align-items: flex-start;
+        padding-top: 5rem;
     }
 
     .qualifications-grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-
-    .qual-heading {
-        font-size: 2rem;
-    }
-
-    .qual-details p,
-    .skills-list li {
-        font-size: 1.1rem;
-    }
-}@media (max-width: 900px) {
-    .qualifications-container { align-items: flex-start; padding-top: 6rem; padding-bottom: 2rem; height: auto; min-height: 100vh; }
-    .section-title { font-size: 2.5rem; margin-bottom: 2rem; }
-    .qual-heading { font-size: 1.8rem; margin-bottom: 1rem; }
-    .qualifications-grid { gap: 30px; }
-    .qual-icon { margin-bottom: 1rem; transform: scale(0.8); }
 }

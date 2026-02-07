@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Home from './Home';
 import About from './About';
 import Qualifications from './Qualifications';
@@ -10,46 +10,48 @@ import './App.css';
 
 function App() {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     container: containerRef
   });
 
-  // Background color morphing
+  // Smooth out the scroll progress for better performance on mobile
+  const smoothScroll = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Background color morphing (Universal)
   const bgColor = useTransform(
-    scrollYProgress,
+    smoothScroll,
     [0, 0.15, 0.25, 0.4, 0.5, 0.65, 0.75, 0.9, 1.0],
     ["#f2f2f2", "#f2f2f2", "#000000", "#000000", "#9ca9b1", "#9ca9b1", "#e2e2e2", "#e2e2e2", "#ad9f8d"]
   );
 
-  // Transitions
-  // Home: 0 -> 0.25
-  const homeOpacity = useTransform(scrollYProgress, [0, 0.15, 0.25], [1, 1, 0]);
-  const homeScale = useTransform(scrollYProgress, [0, 0.25], [1, 0.4]);
-  const homeRotateY = useTransform(scrollYProgress, [0, 0.25], [0, -45]);
-  const homeZ = useTransform(scrollYProgress, [0, 0.25], [0, -500]);
-  const homePointerEvents = useTransform(scrollYProgress, [0, 0.15, 0.25], ["auto", "auto", "none"]);
+  // Opacity Transitions (Universal)
+  const homeOpacity = useTransform(smoothScroll, [0, 0.15, 0.25], [1, 1, 0]);
+  const aboutOpacity = useTransform(smoothScroll, [0.1, 0.25, 0.4, 0.5], [0, 1, 1, 0]);
+  const qualOpacity = useTransform(smoothScroll, [0.4, 0.5, 0.65, 0.75], [0, 1, 1, 0]);
+  const expOpacity = useTransform(smoothScroll, [0.65, 0.75, 0.9, 1.0], [0, 1, 1, 0]);
+  const contactOpacity = useTransform(smoothScroll, [0.9, 1.0], [0, 1]);
 
-  // About: 0.25 -> 0.5
-  const aboutOpacity = useTransform(scrollYProgress, [0.1, 0.25, 0.4, 0.5], [0, 1, 1, 0]);
-  const aboutScale = useTransform(scrollYProgress, [0.1, 0.25, 0.4, 0.5], [1.5, 1, 1, 0.95]);
-  const aboutRotateY = useTransform(scrollYProgress, [0.1, 0.25], [45, 0]);
-  const aboutZ = useTransform(scrollYProgress, [0.1, 0.25], [-500, 0]);
-  const aboutPointerEvents = useTransform(scrollYProgress, [0.15, 0.25, 0.4, 0.5], ["none", "auto", "auto", "none"]);
+  // 3D/Scale Effects (Subtle on Mobile)
+  const homeScale = useTransform(smoothScroll, [0, 0.25], [1, isMobile ? 0.95 : 0.4]);
+  const homeRotateY = useTransform(smoothScroll, [0, 0.25], [0, isMobile ? 0 : -45]);
+  const homeZ = useTransform(smoothScroll, [0, 0.25], [0, isMobile ? 0 : -500]);
 
-  // Qualifications: 0.5 -> 0.75
-  const qualOpacity = useTransform(scrollYProgress, [0.4, 0.5, 0.65, 0.75], [0, 1, 1, 0]);
-  const qualScale = useTransform(scrollYProgress, [0.4, 0.5, 0.65, 0.75], [0.95, 1, 1, 0.95]);
-  const qualPointerEvents = useTransform(scrollYProgress, [0.4, 0.5, 0.65, 0.75], ["none", "auto", "auto", "none"]);
-
-  // Experience: 0.75 -> 1.0
-  const expOpacity = useTransform(scrollYProgress, [0.65, 0.75, 0.9, 0.95], [0, 1, 1, 0]);
-  const expScale = useTransform(scrollYProgress, [0.65, 0.75, 0.9, 0.95], [0.95, 1, 1, 0.95]);
-  const expPointerEvents = useTransform(scrollYProgress, [0.65, 0.75, 0.9, 0.95], ["none", "auto", "auto", "none"]);
-
-  // Contact: 1.0
-  const contactOpacity = useTransform(scrollYProgress, [0.9, 1.0], [0, 1]);
-  const contactScale = useTransform(scrollYProgress, [0.9, 1.0], [0.95, 1]);
-  const contactPointerEvents = useTransform(scrollYProgress, [0.9, 1.0], ["none", "auto"]);
+  const aboutScale = useTransform(smoothScroll, [0.1, 0.25, 0.4, 0.5], [isMobile ? 1 : 1.5, 1, 1, 0.95]);
+  const aboutRotateY = useTransform(smoothScroll, [0.1, 0.25], [isMobile ? 0 : 45, 0]);
+  const aboutZ = useTransform(smoothScroll, [0.1, 0.25], [isMobile ? 0 : -500, 0]);
 
   return (
     <motion.div
@@ -57,12 +59,12 @@ function App() {
       ref={containerRef}
       style={{
         backgroundColor: bgColor,
-        perspective: "1200px"
+        perspective: isMobile ? "none" : "1200px"
       }}
     >
       <Navbar />
 
-      <section id="home" style={{ transformStyle: "preserve-3d" }}>
+      <section id="home">
         <motion.div
           className="section-inner"
           style={{
@@ -70,7 +72,6 @@ function App() {
             scale: homeScale,
             rotateY: homeRotateY,
             z: homeZ,
-            pointerEvents: homePointerEvents,
             transformOrigin: "left center"
           }}
         >
@@ -78,7 +79,7 @@ function App() {
         </motion.div>
       </section>
 
-      <section id="about" style={{ transformStyle: "preserve-3d" }}>
+      <section id="about">
         <motion.div
           className="section-inner"
           style={{
@@ -86,7 +87,6 @@ function App() {
             scale: aboutScale,
             rotateY: aboutRotateY,
             z: aboutZ,
-            pointerEvents: aboutPointerEvents,
             transformOrigin: "right center"
           }}
         >
@@ -95,25 +95,19 @@ function App() {
       </section>
 
       <section id="qualifications">
-        <motion.div
-          className="section-inner"
-          style={{ opacity: qualOpacity, scale: qualScale, pointerEvents: qualPointerEvents }}>
+        <motion.div className="section-inner" style={{ opacity: qualOpacity }}>
           <Qualifications />
         </motion.div>
       </section>
 
       <section id="experience">
-        <motion.div
-          className="section-inner"
-          style={{ opacity: expOpacity, scale: expScale, pointerEvents: expPointerEvents }}>
+        <motion.div className="section-inner" style={{ opacity: expOpacity }}>
           <Experience />
         </motion.div>
       </section>
 
       <section id="contact">
-        <motion.div
-          className="section-inner"
-          style={{ opacity: contactOpacity, scale: contactScale, pointerEvents: contactPointerEvents }}>
+        <motion.div className="section-inner" style={{ opacity: contactOpacity }}>
           <Contact />
         </motion.div>
       </section>
