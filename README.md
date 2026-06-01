@@ -1,5 +1,7 @@
 # Mohamed Khalifa | Full Stack Developer & AI/ML Engineer
 
+**🔗 Live:** [mokhalifa.online](https://mokhalifa.online)
+
 A high-end, editorial-style personal portfolio featuring smooth scrollytelling, liquid background transitions, and a 3D perspective opening.
 
 ## 🚀 Features
