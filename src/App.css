@@ -125,31 +125,6 @@ h1 {
   color: #fff;
 }
 
-/* ── DOMAIN BADGE ── */
-.domain-badge {
-  margin-bottom: 3rem;
-}
-
-.domain-badge a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #999;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  padding: 6px 16px;
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 100px;
-  transition: all 0.2s ease;
-}
-
-.domain-badge a:hover {
-  color: #000;
-  border-color: rgba(0,0,0,0.3);
-}
-
 /* ── TYPEWRITER CURSOR ── */
 .cursor-blink {
   animation: blink 0.8s step-end infinite;
@@ -214,15 +189,6 @@ h1 {
 
   .subtitle {
     margin-bottom: 1.5rem;
-  }
-
-  .domain-badge {
-    margin-bottom: 1.5rem;
-  }
-
-  .domain-badge a {
-    font-size: 0.75rem;
-    padding: 4px 12px;
   }
 
   .button-group {
