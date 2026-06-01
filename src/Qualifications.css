@@ -1,0 +1,99 @@
+.qualifications-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8%;
+    color: #000;
+}
+
+.qualifications-content {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2.4rem, 5vw, 5rem);
+    font-weight: 400;
+    margin-bottom: clamp(1.5rem, 6vh, 4rem);
+    letter-spacing: -2px;
+}
+
+.qualifications-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: stretch;
+}
+
+.qual-column {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.qual-column:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.qual-icon {
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.qual-heading {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+}
+
+.qual-details p {
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+    line-height: 1.4;
+    margin-bottom: 0.1rem;
+}
+
+.qual-year {
+    margin: 0.4rem 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+    line-height: 1.5;
+    margin-bottom: 0.2rem;
+}
+
+@media (max-width: 768px) {
+    .qualifications-container {
+        align-items: flex-start;
+        padding-top: 5.5rem;
+    }
+
+    .qualifications-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .qual-icon {
+        margin-bottom: 0.5rem;
+        transform: scale(0.85);
+        transform-origin: left;
+    }
+}
