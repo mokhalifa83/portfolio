@@ -45,6 +45,13 @@ const projects = [
     github: 'https://github.com/mokhalifa83/design-portfolio-minimalist',
     live: 'https://mokhalifa83.github.io/design-portfolio-minimalist/',
   },
+  {
+    title: 'TextToolbox',
+    desc: 'Comprehensive collection of 32+ text manipulation tools. Fast, free, and privacy-focused.',
+    tags: ['JavaScript', 'Tools', 'Privacy'],
+    github: 'https://github.com/mokhalifa83/texttoolbox',
+    live: 'https://texttoolbox.net',
+  },
 ];
 
 const containerVariants = {
