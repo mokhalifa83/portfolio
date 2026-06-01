@@ -52,6 +52,13 @@ const projects = [
     github: 'https://github.com/mokhalifa83/texttoolbox',
     live: 'https://texttoolbox.net',
   },
+  {
+    title: 'KHALIFA',
+    desc: 'Professional web security scanner & penetration testing toolkit.',
+    tags: ['Python', 'Security', 'Pentesting'],
+    github: 'https://github.com/mokhalifa83/Khalifa-Tool',
+    live: null,
+  },
 ];
 
 const containerVariants = {
