@@ -80,38 +80,30 @@
         top: 12px;
         left: 50%;
         transform: translateX(-50%);
-        width: auto;
-        max-width: calc(100vw - 24px);
+        width: calc(100vw - 16px);
+        max-width: 500px;
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        padding: 4px 12px;
+        padding: 4px 8px;
         border-radius: 30px;
         border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
         -webkit-transform: translateX(-50%) translateZ(0);
     }
 
-    .navbar::-webkit-scrollbar {
-        display: none;
-    }
-
     .nav-links {
-        gap: 4px;
-        flex-shrink: 0;
+        width: 100%;
+        justify-content: center;
+        gap: clamp(2px, 1.2vw, 6px);
         padding: 2px 0;
     }
 
     .nav-links button {
-        font-size: 0.55rem;
-        padding: 6px 8px;
-        letter-spacing: 0.3px;
+        font-size: clamp(0.4rem, 2.5vw, 0.6rem);
+        padding: 5px clamp(4px, 1.5vw, 8px);
+        letter-spacing: 0.2px;
         white-space: nowrap;
-        flex-shrink: 0;
     }
 
     .nav-links button::after {
@@ -121,22 +113,5 @@
     .navbar.section-about .nav-links button,
     .navbar.section-qualifications .nav-links button {
         color: #000;
-    }
-}
-
-@media (max-width: 400px) {
-    .navbar {
-        padding: 4px 8px;
-        max-width: calc(100vw - 16px);
-    }
-
-    .nav-links {
-        gap: 2px;
-    }
-
-    .nav-links button {
-        font-size: 0.5rem;
-        padding: 5px 5px;
-        letter-spacing: 0.1px;
     }
 }
