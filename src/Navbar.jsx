@@ -51,7 +51,7 @@ function Navbar() {
             case 'about': return 'About';
             case 'qualifications': return 'Quals';
             case 'experience': return 'Work';
-            case 'projects': return 'Projects';
+            case 'projects': return 'Proj.';
             case 'contact': return 'Contact';
             default: return id;
         }

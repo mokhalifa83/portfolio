@@ -223,6 +223,7 @@ h1 {
   .main-scroll-container {
     scroll-snap-type: none;
     scroll-behavior: auto;
+    scroll-padding-top: 60px;
   }
 
   section {
@@ -231,6 +232,7 @@ h1 {
     height: auto;
     min-height: 100dvh;
     overflow: visible;
+    padding-top: 50px;
   }
 
   #home {
