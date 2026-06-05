@@ -67,6 +67,18 @@ function Contact() {
                             </svg>
                         </a>
                     </motion.div>
+                    <motion.a
+                        href="https://buymeacoffee.com/mokhalifa"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="coffee-button"
+                        variants={itemVariants}
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2 21V19H20V21H2ZM20 8V5H22V11H20V10H18V13C18 14.1 17.55 15.04 16.83 15.71C16.11 16.38 15.14 16.79 14 16.92V19H16V21H8V19H10V16.92C8.86 16.79 7.89 16.38 7.17 15.71C6.45 15.04 6 14.1 6 13V4H20V8ZM8 7H10V5H8V7ZM12 7H14V5H12V7ZM16 7H18V5H16V7Z"/>
+                        </svg>
+                        Buy me a coffee
+                    </motion.a>
                 </motion.div>
             </div>
         </div>
