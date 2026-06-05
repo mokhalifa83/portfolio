@@ -239,3 +239,39 @@ h1 {
     padding-top: 70px;
   }
 }
+
+/* ── FLOATING BUY ME A COFFEE ── */
+.coffee-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #F5C518;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.coffee-float:hover {
+  background: #000;
+  color: #F5C518;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 768px) {
+  .coffee-float {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+}
